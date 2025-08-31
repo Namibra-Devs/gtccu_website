@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
@@ -9,6 +9,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const dropdownRefs = useRef({});
+  const controls = useAnimation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -30,6 +31,36 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Typewriter animation for GTCCU
+  const text = "GTCCU";
+  useEffect(() => {
+    const typeAndDelete = async () => {
+      while (true) {
+        // Type animation
+        for (let i = 0; i <= text.length; i++) {
+          await controls.start({
+            opacity: 1,
+            transition: { duration: 0.1 },
+            text: text.slice(0, i),
+          });
+          await new Promise((resolve) => setTimeout(resolve, 200));
+        }
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Pause at full text
+        // Delete animation
+        for (let i = text.length; i >= 0; i--) {
+          await controls.start({
+            opacity: 1,
+            transition: { duration: 0.1 },
+            text: text.slice(0, i),
+          });
+          await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Pause before restart
+      }
+    };
+    typeAndDelete();
+  }, [controls, text]);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -92,8 +123,8 @@ export default function Navbar() {
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-blue-900/90 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          ? "bg-white/90 backdrop-blur-md shadow-lg text-blue-900"
+          : "bg-transparent text-white"
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
@@ -107,17 +138,18 @@ export default function Navbar() {
             transition={{ type: "spring", stiffness: 300 }}
           />
           <motion.span
-            className="text-2xl font-bold text-white tracking-tight"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            className={`text-2xl font-bold tracking-tight ${
+              scrolled ? "text-blue-900" : "text-white"
+            }`}
+            animate={controls}
+            initial={{ text: "", opacity: 0 }}
           >
-            GTCCU
+            {text}
           </motion.span>
         </NavLink>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-8 text-white font-medium">
+        <ul className="hidden md:flex items-center gap-8 font-medium">
           {navItems.map((item, index) => (
             <li
               key={index}
@@ -127,7 +159,9 @@ export default function Navbar() {
               {item.subItems ? (
                 <>
                   <button
-                    className="flex items-center gap-1 hover:text-blue-200 transition-colors duration-200"
+                    className={`flex items-center gap-1 transition-colors duration-200 ${
+                      scrolled ? "hover:text-blue-600" : "hover:text-blue-200"
+                    }`}
                     onClick={() => handleDropdownToggle(item.id)}
                     aria-expanded={dropdownOpen === item.id}
                     aria-controls={`dropdown-${item.id}`}
@@ -160,8 +194,14 @@ export default function Navbar() {
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
-                    `hover:text-blue-200 transition-colors duration-200 ${
-                      isActive ? "text-blue-200 underline underline-offset-4" : ""
+                    `transition-colors duration-200 ${
+                      scrolled ? "hover:text-blue-600" : "hover:text-blue-200"
+                    } ${
+                      isActive
+                        ? scrolled
+                          ? "text-blue-600 underline underline-offset-4"
+                          : "text-blue-200 underline underline-offset-4"
+                        : ""
                     }`
                   }
                 >
@@ -174,7 +214,9 @@ export default function Navbar() {
 
         {/* Mobile Button */}
         <button
-          className="md:hidden text-white hover:text-blue-200 transition-colors duration-200 p-2"
+          className={`md:hidden transition-colors duration-200 p-2 ${
+            scrolled ? "text-blue-900 hover:text-blue-600" : "text-white hover:text-blue-200"
+          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle mobile menu"
         >
@@ -182,7 +224,7 @@ export default function Navbar() {
             animate={mobileOpen ? { rotate: 90 } : { rotate: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <Menu size={24} />
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.div>
         </button>
 

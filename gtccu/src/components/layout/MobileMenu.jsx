@@ -23,7 +23,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }) {
     };
   }, [isOpen]);
 
-  // Simplified nav items structure without nested dropdowns for "Open Account"
+  
   const simplifiedNavItems = navItems.map(item => {
     if (item.name === "Join Now" && item.subItems) {
       return {
