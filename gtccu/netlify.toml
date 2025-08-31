@@ -2,9 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
-# ✅ Redirect all routes to index.html (for React Router)
+[build.environment]
+  NODE_VERSION = "20"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
