@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { Users, Target, Shield } from "lucide-react";
 
 export default function AboutSection() {
   const news = [
@@ -30,9 +31,12 @@ export default function AboutSection() {
   useEffect(() => {
     if (isPaused) return;
 
-    const interval = setInterval(() => {
-      setCurrentNewsIndex((prev) => (prev + 1) % news.length);
-    }, isMobile ? 4000 : 3000); // Mobile gives more time for full slide
+    const interval = setInterval(
+      () => {
+        setCurrentNewsIndex((prev) => (prev + 1) % news.length);
+      },
+      isMobile ? 4000 : 3000
+    );
 
     return () => clearInterval(interval);
   }, [news.length, isPaused, isMobile]);
@@ -87,7 +91,7 @@ export default function AboutSection() {
             </div>
           )}
 
-          {/* ✅ Mobile Animation (continuous marquee) */}
+          {/* ✅ Mobile Animation */}
           {isMobile && (
             <div className="relative flex-1 min-h-[44px] overflow-hidden ml-2 flex items-center">
               <div
@@ -95,16 +99,16 @@ export default function AboutSection() {
                 style={{
                   animation: "marquee 85s linear infinite",
                   animationPlayState: isPaused ? "paused" : "running",
-                  width: `${news.length * 200}%`, // Double the width for seamless loop
+                  width: `${news.length * 200}%`,
                   display: "flex",
-                  gap: "2rem", // Space between items
+                  gap: "2rem",
                 }}
               >
                 {[...news, ...news].map((item, idx) => (
                   <span
                     key={idx}
                     className="text-white font-medium text-base whitespace-nowrap"
-                    style={{ flex: `0 0 ${100 / news.length}%` }} // Equal width for each item
+                    style={{ flex: `0 0 ${100 / news.length}%` }}
                   >
                     {item}
                   </span>
@@ -121,7 +125,7 @@ export default function AboutSection() {
             </div>
           )}
 
-          {/* Navigation Dots (Desktop Only) */}
+          {/* Navigation Dots */}
           <div className="flex-shrink-0 flex space-x-1 mx-3 hidden md:flex">
             {news.map((_, idx) => (
               <button
@@ -185,6 +189,46 @@ export default function AboutSection() {
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* 🔵 About Cards */}
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {[
+            {
+              title: "Who We Are",
+              desc: "We are GLOBAL TEACHERS CO-OPERATIVE CREDIT UNION (GTCCU). We are the preferred Credit Union for our Members, stake holders, staff and the Community in which we operate. We are located within the business precinct of Tamale, Northern Region.",
+              icon: <Users className="w-12 h-12 text-blue-600" />,
+            },
+            {
+              title: "Our Mission",
+              desc: "To deliver unique financial solutions that optimizes customer satisfaction and shareholder value through the use of modern technology and a well-motivated professional staff.",
+              icon: <Target className="w-12 h-12 text-blue-600" />,
+            },
+            {
+              title: "Our Values",
+              desc: "Integrity, transparency, and commitment to the financial well-being of our members. To provide everyone with access to financial products and services at affordable rates and in the most cost-effective manner.",
+              icon: <Shield className="w-12 h-12 text-blue-600" />,
+            },
+          ].map((card, idx) => (
+            <motion.div
+              key={idx}
+              className="relative bg-blue-600 backdrop-blur-md p-8 pt-16 shadow-lg text-center text-white"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+            >
+              {/* 🔵 Overlapping Icon */}
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 ">
+                <div className="w-22 h-22  bg-white rounded-full flex items-center justify-center shadow-xl">
+                  {card.icon}
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold mb-3">{card.title}</h3>
+              <p className="text-white text-md leading-relaxed">{card.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
