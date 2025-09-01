@@ -153,7 +153,7 @@ export default function AboutSection() {
           >
             <div className="relative">
               <img
-                src="/images/about1.jpeg"
+                src="/images/about2.jpeg"
                 alt="About GTCCU"
                 className="relative rounded-2xl shadow-lg object-cover w-full h-[350px] md:h-[400px] z-10"
               />

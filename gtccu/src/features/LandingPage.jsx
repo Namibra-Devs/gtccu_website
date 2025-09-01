@@ -6,7 +6,7 @@ import FrequentlyAskedSection from "../components/sections/FrequentlyAskedSectio
 const slides = [
   {
     id: 1,
-    image: "/images/hero1.jpg",
+    image: "/images/about1.jpeg",
     title: "Welcome to GTCCU",
     subtitle: "Your trusted Credit Union for savings, loans, and financial growth.",
   },

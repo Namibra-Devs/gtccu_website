@@ -175,7 +175,7 @@ export default function ProductsSection() {
                       className="inline-block px-4 py-2 bg-white text-blue-700 font-semibold rounded-lg shadow hover:bg-gray-200 transition"
                       onClick={(e) => e.stopPropagation()} // don’t close when clicking link
                     >
-                      Open Account
+                      Learn More
                     </Link>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export default function ProductsSection() {
               to="/about"
               className="inline-block px-6 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow hover:bg-gray-200 transition"
             >
-              Learn More
+              Open Account
             </Link>
           </motion.div>
 
