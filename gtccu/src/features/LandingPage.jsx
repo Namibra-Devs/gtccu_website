@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AboutSection from "@sections/AboutSection";
+import ProductsSection from "../components/sections/ProductSection";
 
 const slides = [
   {
@@ -82,6 +83,7 @@ export default function LandingPage() {
 
       {/* About Section */}
       <AboutSection />
+      <ProductsSection />
     </>
   );
 }

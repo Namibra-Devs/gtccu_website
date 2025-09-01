@@ -212,7 +212,7 @@ export default function AboutSection() {
           ].map((card, idx) => (
             <motion.div
               key={idx}
-              className="relative bg-blue-600 backdrop-blur-md p-8 pt-16 shadow-lg text-center text-white"
+              className="relative bg-blue-600 backdrop-blur-md p-8 pt-16 shadow-lg rounded-sm text-center text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
