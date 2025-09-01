@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AboutSection from "@sections/AboutSection";
 import ProductsSection from "../components/sections/ProductSection";
-
+import FrequentlyAskedSection from "../components/sections/FrequentlyAskedSection";
 const slides = [
   {
     id: 1,
@@ -84,6 +84,7 @@ export default function LandingPage() {
       {/* About Section */}
       <AboutSection />
       <ProductsSection />
+   <FrequentlyAskedSection />
     </>
   );
 }
