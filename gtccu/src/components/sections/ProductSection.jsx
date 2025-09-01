@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Banknote,
@@ -67,6 +67,18 @@ export default function ProductsSection() {
   });
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  // 🔹 State for mobile touch overlay
+  const [activeCardId, setActiveCardId] = useState(null);
+
+  // 🔹 Handle touch events for mobile
+  const handleTouchStart = (id) => {
+    setActiveCardId(id);
+  };
+
+  const handleTouchEnd = () => {
+    setActiveCardId(null);
+  };
+
   return (
     <section className="relative w-full py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -80,7 +92,11 @@ export default function ProductsSection() {
           {products.map(({ id, title, desc, img, icon: Icon, link }) => (
             <div
               key={id}
-              className="relative group rounded-2xl overflow-hidden shadow-lg"
+              className={`relative group rounded-2xl overflow-hidden shadow-lg ${
+                activeCardId === id ? "active-card" : ""
+              }`}
+              onTouchStart={() => handleTouchStart(id)}
+              onTouchEnd={handleTouchEnd}
             >
               <img
                 src={img}
@@ -93,8 +109,12 @@ export default function ProductsSection() {
                 <span className="font-semibold">{title}</span>
               </div>
 
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-blue-900/90 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-between p-6">
+              {/* Hover/Touch Overlay */}
+              <div
+                className={`absolute inset-0 bg-blue-900/90 text-white transition-all duration-500 flex items-center justify-between p-6 ${
+                  activeCardId === id ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                }`}
+              >
                 <Icon className="w-14 h-14 flex-shrink-0" />
                 <div className="ml-4">
                   <h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -163,8 +183,8 @@ export default function ProductsSection() {
                     <motion.div
                       className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center z-10"
                       style={{
-                        backgroundColor: stepProgress.get() > 0.5 ? "#2563eb" : "#d1d5db", // blue when passed, gray otherwise
-                        color: stepProgress.get() > 0.5 ? "#fff" : "#374151",
+                        backgroundColor: stepProgress.get() > 0.5 ? "#1e40af" : "#e5e7eb", // Sleeker colors: deep blue when active, soft gray when inactive
+                        color: stepProgress.get() > 0.5 ? "#fff" : "#1f2937", // White icon when active, dark gray when inactive
                       }}
                     >
                       <Icon className="w-6 h-6" />

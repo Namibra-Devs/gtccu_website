@@ -197,7 +197,7 @@ export default function AboutSection() {
             {
               title: "Who We Are",
               desc: "We are GLOBAL TEACHERS CO-OPERATIVE CREDIT UNION (GTCCU). We are the preferred Credit Union for our Members, stake holders, staff and the Community in which we operate. We are located within the business precinct of Tamale, Northern Region.",
-              icon: <Users className="w-12 h-12 text-blue-600" />,
+              icon: <Users className="w-12 h-12 text-blue-900" />,
             },
             {
               title: "Our Mission",
