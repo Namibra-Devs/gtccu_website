@@ -1,5 +1,10 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import { useRef, useState, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Banknote,
@@ -11,6 +16,9 @@ import {
 } from "lucide-react";
 
 export default function ProductsSection() {
+  // 🔹 Mobile card overlay toggle
+  const [activeCard, setActiveCard] = useState(null);
+
   const products = [
     {
       id: 1,
@@ -59,25 +67,62 @@ export default function ProductsSection() {
     },
   ];
 
-  // 🔹 Animate timeline line growth
+  // ─────────────────────────────────────────────────────────
+  // TIMELINE: stop at last icon & light-up icons as line reaches
+  // ─────────────────────────────────────────────────────────
   const timelineRef = useRef(null);
+  const itemRefs = useRef([]); // refs for each timeline row
+  const [lineMaxPx, setLineMaxPx] = useState(0); // pixel height to last icon center
+  const [iconCenters, setIconCenters] = useState([]); // each icon center (px from container top)
+
+  // Measure positions after layout (and on resize)
+  useLayoutEffect(() => {
+    const measure = () => {
+      const container = timelineRef.current;
+      if (!container) return;
+
+      const containerRect = container.getBoundingClientRect();
+
+      const centers = itemRefs.current.filter(Boolean).map((rowEl) => {
+        const iconEl = rowEl.querySelector(".timeline-icon");
+        const target = iconEl || rowEl;
+        const r = target.getBoundingClientRect();
+        // distance from container top to icon center
+        return r.top - containerRect.top + r.height / 2;
+      });
+
+      setIconCenters(centers);
+
+      if (centers.length > 0) {
+        // last icon center — the line should stop here
+        setLineMaxPx(centers[centers.length - 1]);
+      }
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  // Scroll progress relative to the timeline container
   const { scrollYProgress } = useScroll({
     target: timelineRef,
-    offset: ["start 80%", "end 80%"], // starts when section enters viewport, ends when bottom leaves
+    offset: ["start 80%", "end 80%"], // start near bottom of viewport, end near bottom
   });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  // 🔹 State for mobile touch overlay
-  const [activeCardId, setActiveCardId] = useState(null);
+  // Motion value: line height in px (0 → lineMaxPx)
+  const lineHeightPxMV = useTransform(scrollYProgress, (v) => v * lineMaxPx);
+  // String version for style
+  const lineHeightPx = useTransform(
+    lineHeightPxMV,
+    (v) => `${Math.max(0, Math.min(v, lineMaxPx))}px`
+  );
 
-  // 🔹 Handle touch events for mobile
-  const handleTouchStart = (id) => {
-    setActiveCardId(id);
-  };
-
-  const handleTouchEnd = () => {
-    setActiveCardId(null);
-  };
+  // For lighting-up icons when the line passes them
+  const [progressPx, setProgressPx] = useState(0);
+  useMotionValueEvent(lineHeightPxMV, "change", (v) => {
+    setProgressPx(v);
+  });
 
   return (
     <section className="relative w-full py-20 bg-gray-50">
@@ -89,46 +134,54 @@ export default function ProductsSection() {
 
         {/* 🔹 Product Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {products.map(({ id, title, desc, img, icon: Icon, link }) => (
-            <div
-              key={id}
-              className={`relative group rounded-2xl overflow-hidden shadow-lg ${
-                activeCardId === id ? "active-card" : ""
-              }`}
-              onTouchStart={() => handleTouchStart(id)}
-              onTouchEnd={handleTouchEnd}
-            >
-              <img
-                src={img}
-                alt={title}
-                className="w-full h-72 object-cover transform group-hover:scale-110 transition-all duration-500"
-              />
-              {/* Blue bottom ribbon */}
-              <div className="absolute bottom-0 left-0 w-full bg-blue-600 text-white flex items-center px-4 py-3 space-x-2">
-                <Icon className="w-6 h-6" />
-                <span className="font-semibold">{title}</span>
-              </div>
+          {products.map(({ id, title, desc, img, icon: Icon, link }) => {
+            const isActive = activeCard === id;
 
-              {/* Hover/Touch Overlay */}
+            return (
               <div
-                className={`absolute inset-0 bg-blue-900/90 text-white transition-all duration-500 flex items-center justify-between p-6 ${
-                  activeCardId === id ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                }`}
+                key={id}
+                className="relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+                onClick={() => setActiveCard(isActive ? null : id)} // toggle on tap (mobile)
               >
-                <Icon className="w-14 h-14 flex-shrink-0" />
-                <div className="ml-4">
-                  <h3 className="text-xl font-bold mb-2">{title}</h3>
-                  <p className="mb-3 text-sm text-gray-200">{desc}</p>
-                  <Link
-                    to={link}
-                    className="inline-block px-4 py-2 bg-white text-blue-700 font-semibold rounded-lg shadow hover:bg-gray-200 transition"
-                  >
-                    Learn More
-                  </Link>
+                <img
+                  src={img}
+                  alt={title}
+                  className="w-full h-72 object-cover transform group-hover:scale-110 transition-all duration-500"
+                />
+                {/* Blue bottom ribbon */}
+                <div className="absolute bottom-0 left-0 w-full bg-blue-600 text-white flex items-center px-4 py-3 space-x-2">
+                  <Icon className="w-6 h-6" />
+                  <span className="font-semibold">{title}</span>
+                </div>
+
+                {/* Overlay (desktop hover OR mobile active) */}
+                <div
+                  className={`
+                    absolute inset-0 bg-blue-900/90 text-white flex items-center justify-between p-6
+                    transition-all duration-500
+                    ${
+                      isActive
+                        ? "opacity-100"
+                        : "opacity-0 group-hover:opacity-100"
+                    }
+                  `}
+                >
+                  <Icon className="w-14 h-14 flex-shrink-0" />
+                  <div className="ml-4">
+                    <h3 className="text-xl font-bold mb-2">{title}</h3>
+                    <p className="mb-3 text-sm text-gray-200">{desc}</p>
+                    <Link
+                      to={link}
+                      className="inline-block px-4 py-2 bg-white text-blue-700 font-semibold rounded-lg shadow hover:bg-gray-200 transition"
+                      onClick={(e) => e.stopPropagation()} // don’t close when clicking link
+                    >
+                      Learn More
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* 🔹 Suggestion + Timeline */}
@@ -156,23 +209,24 @@ export default function ProductsSection() {
 
           {/* Timeline Right */}
           <div ref={timelineRef} className="relative">
-            {/* Animated Vertical Line */}
+            {/* Animated Vertical Line (stops at last icon center) */}
             <motion.div
               className="absolute left-6 top-0 w-1 bg-blue-500 origin-top"
-              style={{ height: lineHeight }}
+              style={{ height: lineHeightPx }}
             />
+
             <div className="space-y-12 relative">
               {timeline.map(({ id, icon: Icon, title, desc }, idx) => {
-                // Each step threshold
-                const stepProgress = useTransform(
-                  scrollYProgress,
-                  [0, (idx + 1) / timeline.length],
-                  [0, 1]
-                );
+                // is this icon "reached" by the growing line?
+                const reached =
+                  iconCenters[idx] != null
+                    ? progressPx >= iconCenters[idx]
+                    : false;
 
                 return (
                   <motion.div
                     key={id}
+                    ref={(el) => (itemRefs.current[idx] = el)}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: idx * 0.2 }}
@@ -180,15 +234,16 @@ export default function ProductsSection() {
                     className="flex items-start relative"
                   >
                     {/* Icon Circle */}
-                    <motion.div
-                      className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center z-10"
-                      style={{
-                        backgroundColor: stepProgress.get() > 0.5 ? "#1e40af" : "#e5e7eb", // Sleeker colors: deep blue when active, soft gray when inactive
-                        color: stepProgress.get() > 0.5 ? "#fff" : "#1f2937", // White icon when active, dark gray when inactive
-                      }}
+                    <div
+                      className={`timeline-icon flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center z-10 transition-colors duration-300 ${
+                        reached
+                          ? "bg-[#1e40af] text-white"
+                          : "bg-[#e5e7eb] text-gray-700"
+                      }`}
                     >
                       <Icon className="w-6 h-6" />
-                    </motion.div>
+                    </div>
+
                     {/* Content */}
                     <div className="ml-6">
                       <h4 className="text-xl font-bold text-gray-800">
