@@ -8,22 +8,34 @@ export default function AboutSection() {
     "New loan packages announced for SMEs",
     "Member appreciation day scheduled for October",
     "Digital banking platform update coming next month",
-    "GTCCU wins excellence award for customer service"
+    "GTCCU wins excellence award for customer service",
   ];
 
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const newsRef = useRef(null);
 
+  // ✅ Detect screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // ✅ Auto-change news
   useEffect(() => {
     if (isPaused) return;
-    
+
     const interval = setInterval(() => {
       setCurrentNewsIndex((prev) => (prev + 1) % news.length);
-    }, 3000); // Change news every 3 seconds
+    }, isMobile ? 4000 : 3000); // Mobile gives more time for full slide
 
     return () => clearInterval(interval);
-  }, [news.length, isPaused]);
+  }, [news.length, isPaused, isMobile]);
 
   return (
     <section
@@ -36,8 +48,8 @@ export default function AboutSection() {
       <div className="absolute inset-0 bg-black/70"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
-        {/* 🔴 News Ticker - Right to Left Scroll */}
-        <div 
+        {/* 🔴 News Ticker */}
+        <div
           className="flex items-center mb-12 bg-white/10 backdrop-blur-md rounded-lg p-1 border border-white/20 overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -47,41 +59,78 @@ export default function AboutSection() {
             <span>News</span>
             <span className="ml-2 text-red-200">→</span>
           </div>
-          
-          <div className="relative flex-1 min-h-[44px] overflow-hidden ml-2 flex items-center">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={currentNewsIndex}
-                initial={{ opacity: 0, x: "100%" }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  transition: { duration: 0.5, ease: "easeOut" }
+
+          {/* ✅ Desktop Animation */}
+          {!isMobile && (
+            <div className="relative flex-1 min-h-[44px] overflow-hidden ml-2 flex items-center">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={currentNewsIndex}
+                  initial={{ opacity: 0, x: "100%" }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: 0.5, ease: "easeOut" },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: "-100%",
+                    transition: { duration: 0.5, ease: "easeIn" },
+                  }}
+                  className="absolute inset-0 flex items-center"
+                >
+                  <span className="text-white font-medium text-lg md:text-xl whitespace-nowrap">
+                    {news[currentNewsIndex]}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          )}
+
+          {/* ✅ Mobile Animation (continuous marquee) */}
+          {isMobile && (
+            <div className="relative flex-1 min-h-[44px] overflow-hidden ml-2 flex items-center">
+              <div
+                className="flex"
+                style={{
+                  animation: "marquee 85s linear infinite",
+                  animationPlayState: isPaused ? "paused" : "running",
+                  width: `${news.length * 200}%`, // Double the width for seamless loop
+                  display: "flex",
+                  gap: "2rem", // Space between items
                 }}
-                exit={{ 
-                  opacity: 0, 
-                  x: "-100%",
-                  transition: { duration: 0.5, ease: "easeIn" }
-                }}
-                className="absolute inset-0 flex items-center"
               >
-                <span className="text-white font-medium text-lg md:text-xl whitespace-nowrap">
-                  {news[currentNewsIndex]}
-                </span>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          
-          {/* Navigation Dots */}
+                {[...news, ...news].map((item, idx) => (
+                  <span
+                    key={idx}
+                    className="text-white font-medium text-base whitespace-nowrap"
+                    style={{ flex: `0 0 ${100 / news.length}%` }} // Equal width for each item
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <style>
+                {`
+                  @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-${100 * news.length}%); }
+                  }
+                `}
+              </style>
+            </div>
+          )}
+
+          {/* Navigation Dots (Desktop Only) */}
           <div className="flex-shrink-0 flex space-x-1 mx-3 hidden md:flex">
             {news.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentNewsIndex(idx)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  idx === currentNewsIndex 
-                    ? 'bg-red-500 scale-125' 
-                    : 'bg-white/50 hover:bg-white/80'
+                  idx === currentNewsIndex
+                    ? "bg-red-500 scale-125"
+                    : "bg-white/50 hover:bg-white/80"
                 }`}
                 aria-label={`View news ${idx + 1}`}
               />
@@ -99,7 +148,6 @@ export default function AboutSection() {
             viewport={{ once: true }}
           >
             <div className="relative">
-             
               <img
                 src="/images/about1.jpeg"
                 alt="About GTCCU"
@@ -109,7 +157,7 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Right: Text */}
-          <motion.div 
+          <motion.div
             className="text-white"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
