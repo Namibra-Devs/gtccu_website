@@ -4,6 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,10 +69,9 @@ export default function Navbar() {
       name: "Join Now",
       id: "join-now",
       subItems: [
-        { name: "Make an Enquiry", path: "/join/enquiry" },
-        { name: "Open Account", path: "/join/open" },
-        { name: "Membership Benefits", path: "/join/benefits" },
-        { name: "Eligibility Criteria", path: "/join/eligibility" },
+        { name: "Make an Enquiry", path: "/join/enquiry" }, 
+        { name: "Open Account", path: "/join/open" }, 
+       
       ],
     },
     {

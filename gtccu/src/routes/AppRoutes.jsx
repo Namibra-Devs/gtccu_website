@@ -9,6 +9,8 @@ import News from "@features/News";
 import Jobs from "@features/Jobs";
 import Policies from "@features/Policies";
 import Layout from "@components/layout/Layout";
+import MakeEnquiryPage from "@sections/MakeEnquiryPage";
+import OpenAccountPage from "@sections/OpenAccountPage";
 
 export default function AppRoutes() {
   return (
@@ -24,6 +26,8 @@ export default function AppRoutes() {
           <Route path="/news" element={<News />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/policies" element={<Policies />} />
+          <Route path="/join/enquiry" element={<MakeEnquiryPage />} />
+          <Route path="/join/open" element={<OpenAccountPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
