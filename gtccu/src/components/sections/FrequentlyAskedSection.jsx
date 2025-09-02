@@ -14,6 +14,8 @@ import {
   Instagram,
   Map,
   MessageCircle,
+  Star,
+  Quote
 } from "lucide-react";
 
 export default function FAQStatsSection() {
@@ -66,6 +68,51 @@ export default function FAQStatsSection() {
       color: "bg-pink-600",
     },
     { id: 4, name: "E-mail", icon: Mail, url: "#", color: "bg-blue-900" },
+  ];
+
+  const reviews = [
+    {
+      id: 1,
+      name: "Sarah Mensah",
+      role: "Teacher",
+      content: "Global Teachers CU has been a lifesaver for my financial needs. Their loan process is straightforward, and their customer service is exceptional.",
+      rating: 5,
+    },
+    {
+      id: 2,
+      name: "Kwame Appiah",
+      role: "Education Director",
+      content: "I've been a member for over 8 years, and I can confidently say this is the most member-focused financial institution I've ever encountered.",
+      rating: 5,
+    },
+    {
+      id: 3,
+      name: "Ama Darko",
+      role: "School Principal",
+      content: "The savings plans have helped me achieve my financial goals faster than I expected. The staff are always willing to offer helpful advice.",
+      rating: 4,
+    },
+    {
+      id: 4,
+      name: "Kofi Ansah",
+      role: "Retired Educator",
+      content: "Even in retirement, Global Teachers CU continues to provide excellent service. Their pension management options are fantastic.",
+      rating: 5,
+    },
+    {
+      id: 5,
+      name: "Esi Nyarko",
+      role: "Mathematics Teacher",
+      content: "The mobile banking app is incredibly user-friendly. I can manage all my finances right from my phone with complete security.",
+      rating: 5,
+    },
+    {
+      id: 6,
+      name: "David Osei",
+      role: "School Administrator",
+      content: "Their financial literacy programs have helped our staff make better financial decisions. A truly valuable service for educators.",
+      rating: 4,
+    }
   ];
 
   return (
@@ -187,6 +234,70 @@ export default function FAQStatsSection() {
         </motion.div>
       </div>
 
+      {/* Reviews Section - Grid Layout */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto mt-20"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            What Our Members Say
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Hear from educators and staff who have experienced our financial services firsthand.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {reviews.map((review, index) => (
+            <motion.div
+              key={review.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+            >
+              {/* Quote Icon */}
+              <Quote className="w-8 h-8 text-blue-100 mb-4" />
+              
+              {/* Stars */}
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-5 h-5 ${
+                      i < review.rating
+                        ? "text-yellow-400 fill-current"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              {/* Review Content */}
+              <p className="text-gray-700 mb-6 flex-grow leading-relaxed italic">
+                "{review.content}"
+              </p>
+              
+              {/* Reviewer Info */}
+              <div className="flex items-center mt-auto">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-800">{review.name}</h4>
+                  <p className="text-gray-600 text-sm">{review.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
       {/* Contact Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -284,16 +395,15 @@ export default function FAQStatsSection() {
             </div>
           </div>
           {/* Location Map */}
-          <div className="p-1  rounded-xl">
+          <div className="p-1 rounded-xl">
             <div className="h-[570px] w-full rounded-xl overflow-hidden relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7871.969956460164!2d-0.8509731253173802!3d9.422719658993678!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMjUnMDMuMiJOIDDCsDUxJzI5LjAiVw!5e0!3m2!1sen!2sgh!4v1756747321412!5m2!1sen!2sgh"
                 width="100%"
                 height="100%"
-               
-                allowfullscreen=""
+                allowFullScreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
