@@ -6,19 +6,19 @@ import FrequentlyAskedSection from "../components/sections/FrequentlyAskedSectio
 const slides = [
   {
     id: 1,
-    image: "/images/about1.jpeg",
+    image: "/images/hero1.jpg",
     title: "Welcome to GTCCU",
     subtitle: "Your trusted Credit Union for savings, loans, and financial growth.",
   },
   {
     id: 2,
-    image: "/images/hero2.png",
+    image: "/images/hero2.jpg",
     title: "Secure Your Future",
     subtitle: "Flexible savings and investment options tailored for you.",
   },
   {
     id: 3,
-    image: "/images/hero4.webp",
+    image: "/images/hero3.jpg",
     title: "Smart Loans, Easy Access",
     subtitle: "Quick, reliable and affordable loans to support your dreams.",
   },

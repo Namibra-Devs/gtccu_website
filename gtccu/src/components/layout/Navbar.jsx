@@ -4,7 +4,6 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -22,8 +21,8 @@ export default function Navbar() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        !Object.values(dropdownRefs.current).some((ref) =>
-          ref && ref.contains(event.target)
+        !Object.values(dropdownRefs.current).some(
+          (ref) => ref && ref.contains(event.target)
         )
       ) {
         setDropdownOpen(null);
@@ -69,16 +68,14 @@ export default function Navbar() {
       name: "Join Now",
       id: "join-now",
       subItems: [
-        { name: "Make an Enquiry", path: "/join/enquiry" }, 
-        { name: "Open Account", path: "/join/open" }, 
-       
+        { name: "Make an Enquiry", path: "/join/enquiry" },
+        { name: "Open Account", path: "/join/open" },
       ],
     },
     {
       name: "Services",
       id: "services",
       subItems: [
-        { name: "Savings", path: "/services/savings" },
         { name: "Loans", path: "/services/loans" },
         { name: "Investments", path: "/services/investments" },
         { name: "Shares", path: "/services/shares" },
@@ -215,7 +212,9 @@ export default function Navbar() {
         {/* Mobile Button */}
         <button
           className={`md:hidden transition-colors duration-200 p-2 ${
-            scrolled ? "text-blue-900 hover:text-blue-600" : "text-white hover:text-blue-200"
+            scrolled
+              ? "text-blue-900 hover:text-blue-600"
+              : "text-white hover:text-blue-200"
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle mobile menu"

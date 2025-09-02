@@ -249,7 +249,7 @@ export default function MakeEnquiryPage() {
               Need immediate assistance?
             </h3>
             <p className="text-blue-700">
-              Call us directly at{" "}
+              Call{" "}
               <span className="font-semibold">037 209 8162</span> or{" "}
               <span className="font-semibold">024 897 0706</span>
             </p>

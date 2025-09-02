@@ -11,6 +11,11 @@ import Policies from "@features/Policies";
 import Layout from "@components/layout/Layout";
 import MakeEnquiryPage from "@sections/MakeEnquiryPage";
 import OpenAccountPage from "@sections/OpenAccountPage";
+import LoansPage from "../components/sections/LoansPage";
+import InvestmentsPage from "../components/sections/InvestmentsPage";
+import SharesPage from "../components/sections/SharesPage";
+
+
 
 export default function AppRoutes() {
   return (
@@ -28,6 +33,9 @@ export default function AppRoutes() {
           <Route path="/policies" element={<Policies />} />
           <Route path="/join/enquiry" element={<MakeEnquiryPage />} />
           <Route path="/join/open" element={<OpenAccountPage />} />
+          <Route path="/services/loans" element={<LoansPage />} />
+          <Route path="/services/investments" element={<InvestmentsPage />} />
+          <Route path="/services/shares" element={<SharesPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
