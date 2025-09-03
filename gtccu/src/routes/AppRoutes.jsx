@@ -18,6 +18,7 @@ import WhoWeArePage from "../components/sections/WhoWeArePage";
 import OurTeamPage from "../components/sections/OurTeamPage";
 import OurBoardPage from "../components/sections/OurBoardPage";
 import ByeLawsPage from "../components/sections/ByeLawsPage";
+import GalleryPage from "../components/sections/GalleryPage";
 
 
 
@@ -44,7 +45,7 @@ export default function AppRoutes() {
           <Route path="/about/team" element={<OurTeamPage />} />
           <Route path="/about/board" element={<OurBoardPage />} />
           <Route path="/about/byelaws" element={<ByeLawsPage />} />
-          <Route path="/about/board" element={<OurBoardPage />} />
+          <Route path="/about/gallery" element={<GalleryPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
