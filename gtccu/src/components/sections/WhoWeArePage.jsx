@@ -65,7 +65,7 @@ export default function WhoWeArePage() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.9", "end 0.1"], // start growing near top, finish near bottom
+    offset: ["start 0.9", "end 0.9"], // start growing near top, finish near bottom
   });
 
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);

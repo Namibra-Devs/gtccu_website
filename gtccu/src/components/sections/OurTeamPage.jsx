@@ -5,53 +5,54 @@ import { ArrowLeft, Mail, Phone, Linkedin, Users } from "lucide-react";
 export default function OurTeamPage() {
   const teamMembers = [
     {
-      name: "Dr. Kwame Mensah",
-      role: "Chief Executive Officer",
-      image: "/images/team/ceo.jpg",
-      email: "kwame.mensah@gtccu.com",
+      name: "George Tindana",
+      role: "General Manager",
+      image: "/images/team1.jpg",
+      email: "georgetindaana@gmail.com",
       phone: "+233 24 123 4567",
-      bio: "15+ years of experience in financial services and credit union management."
+      bio: "15+ years of experience in services and credit union management."
     },
     {
-      name: "Ama Serwaa",
-      role: "Operations Manager",
-      image: "/images/team/operations.jpg",
-      email: "ama.serwaa@gtccu.com",
+      name: "Maar Maxwell",
+      role: "Branch Manager",
+      image: "/images/team2.jpg",
+      email: "maarmaxwell@gmail.com",
       phone: "+233 24 234 5678",
       bio: "Expert in credit union operations and member service excellence."
     },
-    {
-      name: "Kofi Ananse",
-      role: "Finance Director",
-      image: "/images/team/finance.jpg",
-      email: "kofi.ananse@gtccu.com",
-      phone: "+233 24 345 6789",
-      bio: "Chartered accountant with extensive experience in financial management."
+      {
+      name: "Kappiah Adams",
+      role: "Board Chairman",
+      image: "/images/team5.jpeg",
+      email: "kappiahadams@gmail.com",
+      phone: "+233 24 567 8901",
+      bio: "Provides leadership, oversees strategy, and ensures good governance."
     },
     {
-      name: "Esi Nyarko",
-      role: "Member Services Manager",
-      image: "/images/team/services.jpg",
-      email: "esi.nyarko@gtccu.com",
-      phone: "+233 24 456 7890",
+      name: "Hajia Ashia Mahama",
+      role: "Vice Chairperson",
+      image: "/images/team6.jpg",
+      email: "aishamahama@gmail.com",
+      phone: "+233 24 678 9012",
+      bio: "Supports the Chairman, ensures continuity, and strengthens coordination."
+    },
+    {
+      name: "Krakani Catherine",
+      role: "Business Solutions / HR",
+      image: "/images/team3.jpeg",
+      email: "krakanicatherine@gmail.com",
+      phone: "+233 24 345 6789",
       bio: "Dedicated to providing exceptional service and support to our members."
     },
     {
-      name: "Yaw Boateng",
-      role: "IT & Digital Solutions",
-      image: "/images/team/it.jpg",
-      email: "yaw.boateng@gtccu.com",
-      phone: "+233 24 567 8901",
-      bio: "Technology expert driving our digital transformation and innovation."
-    },
-    {
-      name: "Akua Manu",
-      role: "Loan Officer",
-      image: "/images/team/loans.jpg",
-      email: "akua.manu@gtccu.com",
-      phone: "+233 24 678 9012",
-      bio: "Specialized in helping members find the perfect loan solutions."
+      name: "Isaac Duncan",
+      role: "Accounts Officer",
+      image: "/images/team4.jpeg",
+      email: "issacduncan@gmail.com",
+      phone: "+233 24 456 7890",
+      bio: "Chartered accountant with extensive experience in financial management."
     }
+  
   ];
 
   const departments = [
@@ -80,10 +81,10 @@ export default function OurTeamPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-green-600 to-green-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/team-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/who.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -117,7 +118,7 @@ export default function OurTeamPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+            className="text-3xl md:text-4xl font-bold text-blue-900 mb-4"
           >
             Leadership Team
           </motion.h2>
@@ -144,7 +145,7 @@ export default function OurTeamPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-1">{member.name}</h3>
-                <p className="text-green-600 font-semibold mb-3">{member.role}</p>
+                <p className="text-blue-600 font-semibold mb-3">{member.role}</p>
                 <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
                 <div className="space-y-2">
                   <div className="flex items-center text-sm text-gray-600">
@@ -163,7 +164,7 @@ export default function OurTeamPage() {
 
         {/* Departments Section */}
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Departments</h2>
+          <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center">Our Departments</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {departments.map((dept, index) => (
               <motion.div
@@ -171,13 +172,13 @@ export default function OurTeamPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 bg-green-50 rounded-lg"
+                className="text-center p-6 bg-blue-50 rounded-lg"
               >
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-green-600" />
+                  <Users className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-gray-800 mb-2">{dept.name}</h3>
-                <p className="text-green-600 font-bold mb-2">{dept.count}</p>
+                <p className="text-blue-600 font-bold mb-2">{dept.count}</p>
                 <p className="text-gray-600 text-sm">{dept.description}</p>
               </motion.div>
             ))}
@@ -185,25 +186,7 @@ export default function OurTeamPage() {
         </div>
       </div>
 
-      {/* Join Team CTA */}
-      <div className="bg-green-600 py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-white mb-4"
-          >
-            Join Our Team
-          </motion.h2>
-          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
-            We're always looking for talented individuals who are passionate about serving the educational community.
-          </p>
-          <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            View Open Positions
-          </button>
-        </div>
-      </div>
+  
     </div>
   );
 }
