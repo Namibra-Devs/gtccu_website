@@ -88,10 +88,10 @@ export default function ReportsPage() {
       <Toast toast={toast} onClose={closeToast} />
       
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-green-600 to-green-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/reports-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/team8.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -108,13 +108,7 @@ export default function ReportsPage() {
           </motion.div>
         </div>
         
-        <Link 
-          to="/"
-          className="absolute top-6 left-6 z-20 flex items-center text-white bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Home
-        </Link>
+        
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
@@ -191,12 +185,12 @@ export default function ReportsPage() {
                 >
                   <div className="md:col-span-6">
                     <div className="flex items-center">
-                      <FileText className="w-5 h-5 text-green-600 mr-3" />
+                      <FileText className="w-5 h-5 text-blue-600 mr-3" />
                       <span className="font-medium text-gray-800">{report.title}</span>
                     </div>
                   </div>
                   <div className="md:col-span-2">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 capitalize">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
                       {report.type}
                     </span>
                   </div>
@@ -212,7 +206,7 @@ export default function ReportsPage() {
                   <div className="md:col-span-1">
                     <button
                       onClick={() => handleDownload(report)}
-                      className="text-green-600 hover:text-green-700 transition-colors"
+                      className="text-blue-600 hover:text-blue-700 transition-colors"
                     >
                       <Download className="w-5 h-5" />
                     </button>
@@ -233,15 +227,25 @@ export default function ReportsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-green-50 rounded-2xl p-6 mt-8 border border-green-200"
+          className="bg-green-50 rounded-2xl p-6 mt-8 border border-blue-200"
         >
-          <h3 className="text-lg font-semibold text-green-800 mb-3">Need Earlier Reports?</h3>
-          <p className="text-green-700 mb-4">
+          <h3 className="text-lg font-semibold text-blue-800 mb-3">Need Earlier Reports?</h3>
+          <p className="text-blue-700 mb-4">
             Contact us if you need access to reports from previous years not listed here.
           </p>
-          <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm">
-            Request Historical Reports
-          </button>
+          
+<Link 
+  to={{
+    pathname: "/contact",
+    state: {
+      subject: "Request for Historical Reports",
+      message: "I would like to request access to historical reports not listed on your website. Please provide me with more information about how to obtain these documents."
+    }
+  }}
+  className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+>
+  Request Historical Reports
+</Link>
         </motion.div>
       </div>
     </div>
