@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Users, Target, Award, Heart } from "lucide-react";
+import { useRef } from "react";
+import { useScroll, useTransform } from "framer-motion";
+
 
 export default function WhoWeArePage() {
   const values = [
@@ -54,9 +57,18 @@ export default function WhoWeArePage() {
     {
       year: "2023",
       event: "5,000+ Members",
-      description: "professional Teachers, Doctors, Nurses, Petty Traders, Contractors and business executives",
+      description:
+        "professional Teachers, Doctors, Nurses, Petty Traders, Contractors and business executives",
     },
   ];
+
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "end 0.1"], // start growing near top, finish near bottom
+  });
+
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -106,8 +118,7 @@ export default function WhoWeArePage() {
                   within the Tamale Metropolis.
                 </p>
               </div>
-              <div className="bg-green-50 p-6 rounded-xl border-l-4 border-blue-600">
-               
+              <div className="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600">
                 <p className="text-gray-700">
                   Our Union which started with the name TAMALE TEACHERS
                   COOPERATIVE CREDIT UNION operated with a strictly only members
@@ -139,7 +150,7 @@ export default function WhoWeArePage() {
                 <span className="text-gray-600">Total Members</span>
                 <span className="font-semibold text-gray-800">4,730+</span>
               </div>
-             
+
               <div className="flex justify-between items-center py-3 border-b border-gray-100">
                 <span className="text-gray-600">Branches</span>
                 <span className="font-semibold text-gray-800">
@@ -193,33 +204,68 @@ export default function WhoWeArePage() {
         <h2 className="text-3xl font-bold text-blue-900 mb-12 text-center">
           Our Journey
         </h2>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-200"></div>
+        <div className="relative" ref={containerRef}>
+ {/* Timeline line with glowing grow animation */}
+        <motion.div
+          style={{ scaleY, transformOrigin: "top center" }}
+          className="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-1 h-full bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.7)]"
+        ></motion.div>
+
+          {/* Timeline line - positioned left on mobile, center on desktop */}
+          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-blue-200"></div>
+
           {milestones.map((milestone, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className={`flex items-center mb-12 ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              }`}
+              className="flex items-start mb-12"
             >
-              <div className="w-1/2"></div>
-              <div className="w-8 h-8 bg-blue-600 rounded-full z-10"></div>
-              <div
-                className={`w-1/2 p-6 ${
-                  index % 2 === 0 ? "text-right" : "text-left"
-                }`}
-              >
-                <div className="bg-white rounded-xl shadow-lg p-6">
-                  <div className="text-blue-600 font-bold text-lg mb-2">
-                    {milestone.year}
+             {/* Timeline dot - responsive positioning */}
+<div className="relative z-10 flex-shrink-0 left-0 md:left-1/2 md:-translate-x-1/2">
+  <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
+</div>
+
+              {/* Content - always on right */}
+              <div className="ml-6 flex-1 md:ml-0">
+                {/* Desktop layout (alternating sides) */}
+                <div className="hidden md:block">
+                  <div
+                    className={`flex ${
+                      index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                    }`}
+                  >
+                    <div className="w-1/2"></div>
+                    <div
+                      className={`w-1/2 p-6 ${
+                        index % 2 === 0 ? "text-right" : "text-left"
+                      }`}
+                    >
+                      <div className="bg-white rounded-xl shadow-lg p-6">
+                        <div className="text-blue-600 font-bold text-lg mb-2">
+                          {milestone.year}
+                        </div>
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                          {milestone.event}
+                        </h3>
+                        <p className="text-gray-600">{milestone.description}</p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {milestone.event}
-                  </h3>
-                  <p className="text-gray-600">{milestone.description}</p>
+                </div>
+
+                {/* Mobile layout (always on right) */}
+                <div className="md:hidden">
+                  <div className="bg-white rounded-xl shadow-lg p-6 ml-4">
+                    <div className="text-blue-600 font-bold text-lg mb-2">
+                      {milestone.year}
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {milestone.event}
+                    </h3>
+                    <p className="text-gray-600">{milestone.description}</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
