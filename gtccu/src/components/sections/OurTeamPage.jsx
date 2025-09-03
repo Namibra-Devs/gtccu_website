@@ -167,7 +167,7 @@ export default function OurTeamPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center p-6 bg-blue-50 rounded-lg"
               >
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="font-semibold text-gray-800 mb-2">{dept.name}</h3>

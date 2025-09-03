@@ -16,6 +16,7 @@ import InvestmentsPage from "../components/sections/InvestmentsPage";
 import SharesPage from "../components/sections/SharesPage";
 import WhoWeArePage from "../components/sections/WhoWeArePage";
 import OurTeamPage from "../components/sections/OurTeamPage";
+import OurBoardPage from "../components/sections/OurBoardPage";
 
 
 
@@ -40,7 +41,7 @@ export default function AppRoutes() {
           <Route path="/services/shares" element={<SharesPage />} />
           <Route path="/about/who-we-are" element={<WhoWeArePage />} />
           <Route path="/about/team" element={<OurTeamPage />} />
-          <Route path="/services/shares" element={<SharesPage />} />
+          <Route path="/about/board" element={<OurBoardPage />} />
         </Routes>
       </Layout>
     </BrowserRouter>
