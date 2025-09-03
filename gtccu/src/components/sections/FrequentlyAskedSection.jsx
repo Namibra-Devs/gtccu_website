@@ -126,7 +126,7 @@ export default function FAQStatsSection() {
           viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 mb-8 flex items-center">
+          <h2 className="text-lg md:text-4xl font-bold text-blue-900 mb-8 flex items-center">
             <span className="w-1 h-8 bg-blue-600 mr-3 rounded-full"></span>
             Frequently Asked Questions
           </h2>

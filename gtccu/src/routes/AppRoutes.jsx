@@ -14,6 +14,7 @@ import OpenAccountPage from "@sections/OpenAccountPage";
 import LoansPage from "../components/sections/LoansPage";
 import InvestmentsPage from "../components/sections/InvestmentsPage";
 import SharesPage from "../components/sections/SharesPage";
+import WhoWeArePage from "../components/sections/WhoWeArePage";
 
 
 
@@ -35,6 +36,9 @@ export default function AppRoutes() {
           <Route path="/join/open" element={<OpenAccountPage />} />
           <Route path="/services/loans" element={<LoansPage />} />
           <Route path="/services/investments" element={<InvestmentsPage />} />
+          <Route path="/services/shares" element={<SharesPage />} />
+          <Route path="/about/who-we-are" element={<WhoWeArePage />} />
+          <Route path="/services/shares" element={<SharesPage />} />
           <Route path="/services/shares" element={<SharesPage />} />
         </Routes>
       </Layout>
