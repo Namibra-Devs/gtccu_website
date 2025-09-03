@@ -23,7 +23,7 @@ export default function NewsPage() {
       category: "announcements",
       date: "2024-01-15",
       author: "Admin Team",
-      image: "/images/news/growth-2023.jpg",
+      image: "/images/hero1.jpg",
       readTime: "3 min read"
     },
     {
@@ -33,7 +33,7 @@ export default function NewsPage() {
       category: "technology",
       date: "2024-01-10",
       author: "IT Department",
-      image: "/images/news/digital-platform.jpg",
+      image: "/images/who.jpg",
       readTime: "4 min read"
     },
     {
@@ -43,7 +43,7 @@ export default function NewsPage() {
       category: "events",
       date: "2024-01-08",
       author: "Education Team",
-      image: "/images/news/workshop.jpg",
+      image: "/images/about3.jpeg",
       readTime: "2 min read"
     },
     {
@@ -53,7 +53,7 @@ export default function NewsPage() {
       category: "products",
       date: "2024-01-05",
       author: "Finance Team",
-      image: "/images/news/loan-rates.jpg",
+      image: "/images/loans.jpg",
       readTime: "3 min read"
     },
     {
@@ -63,7 +63,7 @@ export default function NewsPage() {
       category: "community",
       date: "2023-12-20",
       author: "Outreach Team",
-      image: "/images/news/community.jpg",
+      image: "/images/gallery4.jpg",
       readTime: "5 min read"
     },
     {
@@ -73,7 +73,7 @@ export default function NewsPage() {
       category: "announcements",
       date: "2023-12-15",
       author: "Admin Team",
-      image: "/images/news/holiday-hours.jpg",
+      image: "/images/hero2.jpg",
       readTime: "2 min read"
     }
   ];
@@ -122,10 +122,10 @@ export default function NewsPage() {
       <Toast toast={toast} onClose={closeToast} />
       
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-purple-600 to-purple-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/news-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/gallery5.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -142,13 +142,7 @@ export default function NewsPage() {
           </motion.div>
         </div>
         
-        <Link 
-          to="/"
-          className="absolute top-6 left-6 z-20 flex items-center text-white bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Home
-        </Link>
+       
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
@@ -176,10 +170,10 @@ export default function NewsPage() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${
                     activeCategory === category.id
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-blue-50 text-gray-700 hover:bg-blue-300'
                   }`}
                 >
                   {category.name}
@@ -215,7 +209,7 @@ export default function NewsPage() {
                 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 capitalize">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-blue-800 capitalize">
                       {article.category}
                     </span>
                     <span className="text-sm text-gray-500">{article.readTime}</span>
@@ -241,19 +235,17 @@ export default function NewsPage() {
                   </div>
                   
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <button className="text-purple-600 hover:text-purple-700 font-medium">
-                      Read More
-                    </button>
+                   
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleBookmark(article)}
-                        className="text-gray-400 hover:text-purple-600 transition-colors"
+                        className="text-gray-400 hover:text-blue-600 transition-colors"
                       >
                         <Bookmark className="w-5 h-5" />
                       </button>
                       <button
                         onClick={() => handleShare(article)}
-                        className="text-gray-400 hover:text-purple-600 transition-colors"
+                        className="text-gray-400 hover:text-blue-600 transition-colors"
                       >
                         <Share2 className="w-5 h-5" />
                       </button>
@@ -284,8 +276,8 @@ export default function NewsPage() {
           className="bg-purple-50 rounded-2xl p-8 mt-12 border border-purple-200"
         >
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-purple-800 mb-2">Stay Updated</h3>
-            <p className="text-purple-600 mb-6 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-blue-900 mb-2">Stay Updated</h3>
+            <p className="text-blue-600 mb-6 max-w-2xl mx-auto">
               Subscribe to our newsletter to receive the latest news and updates directly in your inbox.
             </p>
             
@@ -293,9 +285,9 @@ export default function NewsPage() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                className="flex-1 px-4 py-3 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
-              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-semibold">
+              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
                 Subscribe
               </button>
             </div>
