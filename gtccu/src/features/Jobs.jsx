@@ -112,10 +112,10 @@ export default function JobsPage() {
       <Toast toast={toast} onClose={closeToast} />
       
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-orange-600 to-orange-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/jobs-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/gallery3.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -132,13 +132,6 @@ export default function JobsPage() {
           </motion.div>
         </div>
         
-        <Link 
-          to="/"
-          className="absolute top-6 left-6 z-20 flex items-center text-white bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Home
-        </Link>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
@@ -154,7 +147,7 @@ export default function JobsPage() {
               onClick={() => setActiveTab("openings")}
               className={`px-6 py-3 font-medium border-b-2 transition-colors ${
                 activeTab === "openings"
-                  ? "border-orange-600 text-orange-600"
+                  ? "border-blue-600 text-blue-600"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -164,7 +157,7 @@ export default function JobsPage() {
               onClick={() => setActiveTab("apply")}
               className={`px-6 py-3 font-medium border-b-2 transition-colors ${
                 activeTab === "apply"
-                  ? "border-orange-600 text-orange-600"
+                  ? "border-blue-600 text-blue-600"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -212,7 +205,7 @@ export default function JobsPage() {
                       setActiveTab("apply");
                       setApplicationData({...applicationData, position: job.title});
                     }}
-                    className="mt-4 md:mt-0 bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors font-semibold"
+                    className="mt-4 md:mt-0 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                   >
                     Apply Now
                   </button>
@@ -281,7 +274,7 @@ export default function JobsPage() {
                     value={applicationData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="Your full name"
                   />
                 </div>
@@ -296,7 +289,7 @@ export default function JobsPage() {
                     value={applicationData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -312,7 +305,7 @@ export default function JobsPage() {
                     name="phone"
                     value={applicationData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                     placeholder="Your phone number"
                   />
                 </div>
@@ -326,7 +319,7 @@ export default function JobsPage() {
                     value={applicationData.position}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                   >
                     <option value="">Select a position</option>
                     {jobOpenings.map(job => (
@@ -345,7 +338,7 @@ export default function JobsPage() {
                   value={applicationData.coverLetter}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                   placeholder="Tell us why you're interested in this position..."
                 ></textarea>
               </div>
@@ -355,7 +348,7 @@ export default function JobsPage() {
                   Resume/CV *
                 </label>
                 <div className="flex items-center justify-center w-full">
-                  <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-orange-500 transition">
+                  <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-blue-500 transition">
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <Upload className="w-8 h-8 text-gray-400 mb-2" />
                       <p className="text-sm text-gray-500">
@@ -379,7 +372,7 @@ export default function JobsPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-orange-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md hover:bg-orange-700 transition-all flex items-center justify-center"
+                className="w-full bg-blue-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-all flex items-center justify-center"
               >
                 <Send className="w-5 h-5 mr-2" />
                 Submit Application
@@ -393,30 +386,30 @@ export default function JobsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-orange-50 rounded-2xl p-8 mt-12 border border-orange-200"
+          className="bg-blue-50 rounded-2xl p-8 mt-12 border border-blue-200"
         >
-          <h3 className="text-2xl font-bold text-orange-800 mb-6 text-center">Why Work With Us?</h3>
+          <h3 className="text-2xl font-bold text-blue-900 mb-6 text-center">Why Work With Us?</h3>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-orange-600" />
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-blue-600" />
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Competitive Compensation</h4>
               <p className="text-gray-600">We offer competitive salaries and benefits packages</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-orange-600" />
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-blue-600" />
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Work-Life Balance</h4>
               <p className="text-gray-600">Flexible working hours and supportive environment</p>
             </div>
             
             <div className="text-center">
-              <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Briefcase className="w-8 h-8 text-orange-600" />
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Briefcase className="w-8 h-8 text-blue-600" />
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Career Growth</h4>
               <p className="text-gray-600">Opportunities for professional development and advancement</p>
