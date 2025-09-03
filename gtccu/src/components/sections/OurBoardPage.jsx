@@ -76,7 +76,7 @@ export default function OurBoardPage() {
       {/* Hero Section */}
       <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+          className="absolute inset-0 bg-cover bg-center opacity-50"
           style={{ backgroundImage: "url('/images/who.jpg')" }}
         ></div>
         
@@ -179,7 +179,7 @@ export default function OurBoardPage() {
                     <p className="text-gray-700">Screening of candidates by nominations committee</p>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-blue-100 text-purple-600 rounded-full p-2 mr-4">
+                    <div className="bg-blue-100 text-blue-600 rounded-full p-2 mr-4">
                       <span className="font-bold">3</span>
                     </div>
                     <p className="text-gray-700">Elections during Annual General Meeting</p>
