@@ -138,10 +138,10 @@ export default function PoliciesPage() {
       <Toast toast={toast} onClose={closeToast} />
       
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-indigo-600 to-indigo-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/policies-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/team10.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -158,13 +158,6 @@ export default function PoliciesPage() {
           </motion.div>
         </div>
         
-        <Link 
-          to="/"
-          className="absolute top-6 left-6 z-20 flex items-center text-white bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Home
-        </Link>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
@@ -181,10 +174,10 @@ export default function PoliciesPage() {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                   activeCategory === category.id
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-blue-100 text-gray-700 hover:bg-blue-200'
                 }`}
               >
                 <span className="mr-2">{category.icon}</span>
@@ -212,10 +205,10 @@ export default function PoliciesPage() {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
                   <div className="bg-indigo-100 p-2 rounded-lg mr-4">
-                    <FileText className="w-6 h-6 text-indigo-600" />
+                    <FileText className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-800">{policy.title}</h3>
+                    <h3 className="text-lg font-bold text-blue-800">{policy.title}</h3>
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 capitalize">
                       {policy.category}
                     </span>
@@ -241,14 +234,14 @@ export default function PoliciesPage() {
               <div className="flex space-x-3">
                 <button
                   onClick={() => handleView(policy)}
-                  className="flex-1 bg-indigo-50 text-indigo-600 py-2 px-4 rounded-lg hover:bg-indigo-100 transition-colors font-medium flex items-center justify-center"
+                  className="flex-1 bg-blue-50 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-100 transition-colors font-medium flex items-center justify-center"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   View
                 </button>
                 <button
                   onClick={() => handleDownload(policy)}
-                  className="flex-1 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors font-medium flex items-center justify-center"
+                  className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download
@@ -278,12 +271,12 @@ export default function PoliciesPage() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="grid md:grid-cols-2 gap-8 mt-12"
         >
-          <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-200">
-            <h3 className="text-lg font-semibold text-indigo-800 mb-3">Policy Updates</h3>
-            <p className="text-indigo-700 mb-4">
+          <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
+            <h3 className="text-lg font-semibold text-blue-800 mb-3">Policy Updates</h3>
+            <p className="text-blue-700 mb-4">
               We regularly review and update our policies to ensure compliance with regulations and best practices.
             </p>
-            <ul className="list-disc list-inside text-indigo-700 space-y-1 text-sm">
+            <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
               <li>Quarterly policy reviews</li>
               <li>Regulatory compliance updates</li>
               <li>Member feedback incorporation</li>
@@ -295,9 +288,19 @@ export default function PoliciesPage() {
             <p className="text-gray-600 mb-4">
               If you have questions about any of our policies or need help understanding them, our team is here to help.
             </p>
-            <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm">
-              Contact Support
-            </button>
+          
+            <Link 
+              to={{
+                pathname: "/contact",
+                state: {
+                  subject: "Request for Historical Reports",
+                  message: "I would like to request access to historical reports not listed on your website. Please provide me with more information about how to obtain these documents."
+                }
+              }}
+              className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+            >
+             Contact Support
+            </Link>
           </div>
         </motion.div>
       </div>

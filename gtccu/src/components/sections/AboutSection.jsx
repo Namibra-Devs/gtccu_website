@@ -182,7 +182,7 @@ export default function AboutSection() {
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                to="/about"
+                to="/about/who-we-are"
                 className="inline-block bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-3 rounded-xl shadow-lg transition-all duration-300 font-semibold"
               >
                 About Us

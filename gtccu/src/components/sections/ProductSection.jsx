@@ -26,7 +26,7 @@ export default function ProductsSection() {
       desc: "Flexible savings accounts designed to help you achieve your financial goals.",
       img: "/images/savings.jpg",
       icon: Wallet,
-      link: "/products/savings",
+      link: "/services/loans",
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ export default function ProductsSection() {
       desc: "Affordable loans with competitive rates tailored to your needs.",
       img: "/images/loans.jpg",
       icon: Banknote,
-      link: "/products/loans",
+      link: "/services/loans",
     },
     {
       id: 3,
@@ -42,7 +42,7 @@ export default function ProductsSection() {
       desc: "Grow your wealth with our secure investment opportunities.",
       img: "/images/gtccu-logo1.PNG",
       icon: TrendingUp,
-      link: "/products/investments",
+      link: "/services/investments",
     },
   ];
 
@@ -67,9 +67,8 @@ export default function ProductsSection() {
     },
   ];
 
-  // ─────────────────────────────────────────────────────────
-  // TIMELINE: stop at last icon & light-up icons as line reaches
-  // ─────────────────────────────────────────────────────────
+  
+
   const timelineRef = useRef(null);
   const itemRefs = useRef([]); // refs for each timeline row
   const [lineMaxPx, setLineMaxPx] = useState(0); // pixel height to last icon center
@@ -200,7 +199,7 @@ export default function ProductsSection() {
               financial freedom, stability, and growth to your future.
             </p>
             <Link
-              to="/about"
+              to="/join/open"
               className="inline-block px-6 py-3 bg-white text-blue-700 font-semibold rounded-xl shadow hover:bg-gray-200 transition"
             >
               Open Account
