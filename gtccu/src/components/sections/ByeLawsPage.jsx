@@ -48,10 +48,10 @@ export default function ByeLawsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
-      <div className="relative h-96 bg-gradient-to-r from-indigo-600 to-indigo-800 overflow-hidden">
+      <div className="relative h-96 bg-black overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/laws-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-50"
+          style={{ backgroundImage: "url('/images/who.jpg')" }}
         ></div>
         
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
@@ -68,14 +68,7 @@ export default function ByeLawsPage() {
           </motion.div>
         </div>
         
-        {/* Back Button */}
-        <Link 
-          to="/about"
-          className="absolute top-6 left-6 z-20 flex items-center text-white bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to About
-        </Link>
+
       </div>
 
       {/* Content Section */}
@@ -87,7 +80,7 @@ export default function ByeLawsPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">Governing Document</h2>
+              <h2 className="text-3xl font-bold text-blue-900 mb-6">Governing Document</h2>
               <p className="text-gray-700 mb-6">
                 Our bye-laws serve as the fundamental governing document that outlines the structure, 
                 operations, and management of Global Teachers Credit Union. They ensure we operate 

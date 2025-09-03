@@ -118,7 +118,7 @@ export default function InvestmentsPage() {
               <ul className="space-y-2 mb-6">
                 {investment.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-sm text-gray-600">
-                    <TrendingUp className="w-4 h-4 text-purple-500 mr-2" />
+                    <TrendingUp className="w-4 h-4 text-blue-500 mr-2" />
                     {feature}
                   </li>
                 ))}
@@ -133,7 +133,7 @@ export default function InvestmentsPage() {
       </div>
 
       {/* Benefits Section */}
-      <div className="bg-purple-50 py-16">
+      <div className="bg-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-blue-900 mb-4">Investment Advantages</h2>
@@ -149,7 +149,7 @@ export default function InvestmentsPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-center"
             >
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-blue-900" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Secure & Regulated</h3>
@@ -162,7 +162,7 @@ export default function InvestmentsPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-center"
             >
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BarChart className="w-8 h-8 text-blue-900" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Expert Management</h3>
@@ -175,7 +175,7 @@ export default function InvestmentsPage() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-center"
             >
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Target className="w-8 h-8 text-blue-900" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Goal-Oriented</h3>
