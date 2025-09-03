@@ -117,7 +117,7 @@ export default function MakeEnquiryPage() {
             <div className="bg-blue-100 p-3 rounded-full mr-4">
               <MessageCircle className="w-8 h-8 text-blue-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800">
+            <h2 className="text-2xl font-bold text-blue-900">
               Send us a message
             </h2>
           </div>

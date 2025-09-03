@@ -126,7 +126,7 @@ export default function FAQStatsSection() {
           viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-blue-900 mb-8 flex items-center">
             <span className="w-1 h-8 bg-blue-600 mr-3 rounded-full"></span>
             Frequently Asked Questions
           </h2>
@@ -243,7 +243,7 @@ export default function FAQStatsSection() {
         className="max-w-7xl mx-auto mt-20"
       >
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
             What Our Members Say
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -306,9 +306,9 @@ export default function FAQStatsSection() {
         viewport={{ once: true }}
         className="max-w-7xl mx-auto mt-20 bg-white rounded-2xl shadow-xl overflow-hidden"
       >
-        <div className="grid md:grid-cols-2">
+        <div className="grid md:grid-cols-2 ">
           {/* Company Details & Socials */}
-          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-10 text-white">
+          <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-10 text-white order-2 md:order-1">
             <h2 className="text-3xl font-bold mb-8 flex items-center">
               <MessageCircle className="mr-3" />
               Get in Touch
@@ -395,7 +395,7 @@ export default function FAQStatsSection() {
             </div>
           </div>
           {/* Location Map */}
-          <div className="p-1 rounded-xl">
+          <div className="p-1 rounded-xl order-1 md:order-2">
             <div className="h-[570px] w-full rounded-xl overflow-hidden relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7871.969956460164!2d-0.8509731253173802!3d9.422719658993678!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMjUnMDMuMiJOIDDCsDUxJzI5LjAiVw!5e0!3m2!1sen!2sgh!4v1756747321412!5m2!1sen!2sgh"

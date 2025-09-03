@@ -168,7 +168,7 @@ export default function OpenAccountPage() {
                 <div className="bg-blue-100 p-3 rounded-full mr-4">
                   <User className="w-8 h-8 text-blue-900" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">Personal Information</h2>
+                <h2 className="text-2xl font-bold text-blue-900">Personal Information</h2>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -301,7 +301,7 @@ export default function OpenAccountPage() {
                 <div className="bg-green-100 p-3 rounded-full mr-4">
                   <MapPin className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">Address Information</h2>
+                <h2 className="text-2xl font-bold text-blue-900">Address Information</h2>
               </div>
 
               <div className="mb-6">
@@ -411,7 +411,7 @@ export default function OpenAccountPage() {
                 <div className="bg-green-100 p-3 rounded-full mr-4">
                   <IdCard className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">Account Preferences</h2>
+                <h2 className="text-2xl font-bold text-blue-900">Account Preferences</h2>
               </div>
 
               <div className="mb-6">
@@ -498,7 +498,7 @@ export default function OpenAccountPage() {
               <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-12 h-12 text-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Application Submitted!</h2>
+              <h2 className="text-2xl font-bold text-blue-900 mb-4">Application Submitted!</h2>
               <p className="text-gray-600 mb-8 max-w-md mx-auto">
                 Thank you for applying to open an account with Global Teachers Credit Union. 
                 We'll review your application and contact you within 24 hours.
