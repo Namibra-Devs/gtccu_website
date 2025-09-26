@@ -15,7 +15,7 @@ import {
   Map,
   MessageCircle,
   Star,
-  Quote
+  Quote,
 } from "lucide-react";
 
 export default function FAQStatsSection() {
@@ -75,44 +75,50 @@ export default function FAQStatsSection() {
       id: 1,
       name: "Sarah Mensah",
       role: "Teacher",
-      content: "Global Teachers CU has been a lifesaver for my financial needs. Their loan process is straightforward, and their customer service is exceptional.",
+      content:
+        "Global Teachers CU has been a lifesaver for my financial needs. Their loan process is straightforward, and their customer service is exceptional.",
       rating: 5,
     },
     {
       id: 2,
       name: "Kwame Appiah",
       role: "Education Director",
-      content: "I've been a member for over 8 years, and I can confidently say this is the most member-focused financial institution I've ever encountered.",
+      content:
+        "I've been a member for over 8 years, and I can confidently say this is the most member-focused financial institution I've ever encountered.",
       rating: 5,
     },
     {
       id: 3,
       name: "Ama Darko",
       role: "School Principal",
-      content: "The savings plans have helped me achieve my financial goals faster than I expected. The staff are always willing to offer helpful advice.",
+      content:
+        "The savings plans have helped me achieve my financial goals faster than I expected. The staff are always willing to offer helpful advice.",
       rating: 4,
     },
     {
       id: 4,
       name: "Kofi Ansah",
       role: "Retired Educator",
-      content: "Even in retirement, Global Teachers CU continues to provide excellent service. Their pension management options are fantastic.",
+      content:
+        "Even in retirement, Global Teachers CU continues to provide excellent service. Their pension management options are fantastic.",
       rating: 5,
     },
     {
       id: 5,
       name: "Esi Nyarko",
       role: "Mathematics Teacher",
-      content: "The mobile banking app is incredibly user-friendly. I can manage all my finances right from my phone with complete security.",
+      content:
+        "The mobile banking app is incredibly user-friendly. I can manage all my finances right from my phone with complete security.",
       rating: 5,
     },
     {
       id: 6,
       name: "David Osei",
       role: "School Administrator",
-      content: "Their financial literacy programs have helped our staff make better financial decisions. A truly valuable service for educators.",
+      content:
+        "Their financial literacy programs have helped our staff make better financial decisions. A truly valuable service for educators.",
       rating: 4,
-    }
+    },
   ];
 
   return (
@@ -176,62 +182,88 @@ export default function FAQStatsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl shadow-xl p-8 flex flex-col justify-center text-white relative overflow-hidden"
+          className="w-full min-h-[400px] rounded-2xl shadow-xl relative overflow-hidden"
         >
+          {/* Image Background */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/faq.jpg"
+              alt="Background"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/20"></div>
+          </div>
+
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-10 z-0">
             <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern"></div>
           </div>
-
-          <h2 className="text-3xl font-bold mb-10 relative z-10">
-            Our Impact in Numbers
-          </h2>
-          <div className="grid grid-cols-2 gap-6 relative z-10">
-            {stats.map(({ id, label, value, icon: Icon }) => (
-              <motion.div
-                key={id}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/15 transition-colors duration-300"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <div className="flex justify-center mb-3">
-                  <div className="p-2 bg-white/20 rounded-full">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                </div>
-                <div className="text-3xl md:text-4xl font-extrabold mb-1">
-                  {isInView ? (
-                    <CountUp
-                      end={value}
-                      duration={2.5}
-                      separator=","
-                      delay={0.2}
-                    />
-                  ) : (
-                    0
-                  )}
-                  +
-                </div>
-                <p className="mt-2 text-blue-100 font-medium text-sm">
-                  {label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Animated elements */}
-          <motion.div
-            className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-blue-500 opacity-20"
-            animate={{
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
         </motion.div>
+      </div>
+      <div className="w-full bg-blue-900 py-16 mt-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <h2 className="text-3xl font-bold mb-10 relative z-10 text-white text-center">
+              Our Impact in Numbers
+            </h2>
+
+            <div className="grid grid-cols-2 gap-6 relative z-10">
+              {stats.map(({ id, label, value, icon: Icon }) => (
+                <motion.div
+                  key={id}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/15 transition-colors duration-300"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="flex justify-center mb-3">
+                    <div className="p-2 bg-white/20 rounded-full">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-extrabold mb-1 text-white">
+                    {isInView ? (
+                      <CountUp
+                        end={value}
+                        duration={2.5}
+                        separator=","
+                        delay={0.2}
+                      />
+                    ) : (
+                      0
+                    )}
+                    +
+                  </div>
+                  <p className="mt-2 text-blue-100 font-medium text-sm">
+                    {label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Animated elements */}
+            <motion.div
+              className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-blue-500 opacity-20 z-0"
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* Reviews Section - Grid Layout */}
@@ -247,7 +279,8 @@ export default function FAQStatsSection() {
             What Our Members Say
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Hear from educators and staff who have experienced our financial services firsthand.
+            Hear from educators and staff who have experienced our financial
+            services firsthand.
           </p>
         </div>
 
@@ -263,7 +296,7 @@ export default function FAQStatsSection() {
             >
               {/* Quote Icon */}
               <Quote className="w-8 h-8 text-blue-100 mb-4" />
-              
+
               {/* Stars */}
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -277,12 +310,12 @@ export default function FAQStatsSection() {
                   />
                 ))}
               </div>
-              
+
               {/* Review Content */}
               <p className="text-gray-700 mb-6 flex-grow leading-relaxed italic">
                 "{review.content}"
               </p>
-              
+
               {/* Reviewer Info */}
               <div className="flex items-center mt-auto">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
@@ -341,9 +374,7 @@ export default function FAQStatsSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-blue-100">Headquarters</h3>
-                  <p className="text-lg">
-                    Tamale, Northern Region, Ghana.
-                  </p>
+                  <p className="text-lg">Tamale, Northern Region, Ghana.</p>
                 </div>
               </div>
 

@@ -102,15 +102,7 @@ export default function MakeEnquiryPage() {
             </p>
           </motion.div>
         </div>
-        
-        {/* Back Button */}
-        <Link
-          to="/"
-          className="absolute top-4 left-4 z-20 flex items-center gap-2 text-white bg-black/30 hover:bg-black/50 px-4 py-2 rounded-lg transition-all"
-        >
-          <ArrowLeft size={20} />
-          Back to Home
-        </Link>
+       
       </div>
 
       {/* Enquiry Form Section with Image */}
