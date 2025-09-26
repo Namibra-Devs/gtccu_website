@@ -81,7 +81,7 @@ export default function SharesPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-lg transition-shadow duration-300"
             >
               <div className="text-blue-900 mb-4 mx-auto">{benefit.icon}</div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">{benefit.title}</h3>
@@ -91,7 +91,7 @@ export default function SharesPage() {
         </div>
 
         {/* Requirements Section */}
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white rounded-xl shadow-sm p-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-blue-900 mb-4">Share Requirements</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -152,7 +152,7 @@ export default function SharesPage() {
       </div>
 
       {/* Performance Section */}
-      <div className="bg-orange-50 py-16">
+      <div className="bg-blue-50 py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -171,7 +171,7 @@ export default function SharesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white rounded-xl p-6 shadow-sm"
             >
               <div className="text-3xl font-bold text-blue-600 mb-2">8.5%</div>
               <div className="text-gray-600">2023 Dividend</div>
@@ -181,7 +181,7 @@ export default function SharesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white rounded-xl p-6 shadow-sm"
             >
               <div className="text-3xl font-bold text-blue-600 mb-2">8.2%</div>
               <div className="text-gray-600">2022 Dividend</div>
@@ -191,7 +191,7 @@ export default function SharesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white rounded-xl p-6 shadow-sm"
             >
               <div className="text-3xl font-bold text-blue-600 mb-2">7.9%</div>
               <div className="text-gray-600">2021 Dividend</div>
@@ -201,7 +201,7 @@ export default function SharesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-white rounded-xl p-6 shadow-sm"
             >
               <div className="text-3xl font-bold text-blue-600 mb-2">7.5%</div>
               <div className="text-gray-600">2020 Dividend</div>

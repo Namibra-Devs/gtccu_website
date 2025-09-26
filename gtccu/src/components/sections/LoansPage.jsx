@@ -86,14 +86,14 @@ export default function LoansPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="text-blue-600 mb-4">{loan.icon}</div>
               <h3 className="text-xl font-bold text-gray-800 mb-3">{loan.title}</h3>
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Interest Rate:</span>
-                  <span className="font-semibold text-green-600">{loan.rate}</span>
+                  <span className="font-semibold text-blue-600">{loan.rate}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Maximum Amount:</span>
@@ -107,7 +107,7 @@ export default function LoansPage() {
               <ul className="space-y-2 mb-6">
                 {loan.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-sm text-gray-600">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-blue-500 mr-2" />
                     {feature}
                   </li>
                 ))}

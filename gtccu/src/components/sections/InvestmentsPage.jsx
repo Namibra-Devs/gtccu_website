@@ -87,12 +87,12 @@ export default function InvestmentsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-xl shadow-sm p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl font-bold text-gray-800">{investment.title}</h3>
                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  investment.risk === "Low" ? "bg-green-100 text-green-800" :
+                  investment.risk === "Low" ? "bg-blue-100 text-blue-800" :
                   investment.risk === "Medium" ? "bg-yellow-100 text-yellow-800" :
                   "bg-red-100 text-red-800"
                 }`}>
@@ -103,7 +103,7 @@ export default function InvestmentsPage() {
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Expected Return:</span>
-                  <span className="font-semibold text-green-600">{investment.return}</span>
+                  <span className="font-semibold text-blue-600">{investment.return}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Minimum Term:</span>

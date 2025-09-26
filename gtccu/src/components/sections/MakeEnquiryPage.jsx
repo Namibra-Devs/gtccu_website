@@ -214,14 +214,14 @@ export default function MakeEnquiryPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-blue-800 transition"
                     >
                       <option value="">Select enquiry type</option>
-                      <option value="shea-butter">Shea Butter Products</option>
-                      <option value="black-soap">African Black Soap</option>
-                      <option value="cashew">Cashew Products</option>
-                      <option value="wholesale">Wholesale Inquiry</option>
-                      <option value="distribution">Distribution Partnership</option>
+                      <option value="shea-butter">Loans</option>
+                      <option value="black-soap">Shares</option>
+                      <option value="cashew">Investments</option>
+                      <option value="wholesale">Policies</option>
+                      <option value="distribution">Jobs</option>
                       <option value="other">Other Enquiry</option>
                     </select>
                   </div>

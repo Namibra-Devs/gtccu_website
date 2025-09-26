@@ -70,6 +70,90 @@ export default function GalleryPage() {
       image: "/images/hero2.jpg",
       title: "Industry Award Ceremony",
       description: "Recognizing excellence in service"
+    },
+    {
+      id: 10,
+      category: "events",
+      image: "/images/gallery10.jpg",
+      title: "Annual General Meeting (AGM)",
+      description: "Financial performance review"
+    },
+    {
+      id: 11,
+      category: "facilities",
+      image: "/images/gallery11.jpg",
+      title: "Member Service Desk",
+      description: "Counter for personalized support and guidance."
+    },
+    {
+      id:12,
+      category: "team",
+      image: "/images/gallery12.jpg",
+      title: "Credit Officers",
+      description: "Assisting members with loan applications and financial planning."
+    },
+    {
+      id: 13,
+      category: "community",
+      image: "/images/gallery13.jpg",
+      title: "Entrepreneurship Support",
+      description: "Providing micro-loans and mentorship for small businesses."
+    },
+    {
+      id: 14,
+      category: "awards",
+      image: "/images/gallery14.jpg",
+      title: "Best Credit Union of the Year",
+      description: "Recognized for outstanding service delivery and growth."
+    },
+    {
+      id: 15,
+      category: "events",
+      image: "/images/gallery15.jpg",
+      title: "Financial Literacy Workshop",
+      description: "Educating members on savings and investments."
+    },
+    {
+      id: 16,
+      category: "facilities",
+      image: "/images/gallery16.jpg",
+      title: "Training & Resource Center",
+      description: "A hub for staff development and financial literacy programs."
+    },
+    {
+      id: 17,
+      category: "team",
+      image: "/images/gallery17.jpg",
+      title: "Customer Service Executives",
+      description: "Friendly staff providing frontline support to all members."
+    },
+    {
+      id: 18,
+      category: "community",
+      image: "/images/gallery18.jpg",
+      title: "Charity Donations",
+      description: "Contributions to orphanages, hospitals and community projects."
+    },
+    {
+      id: 19,
+      category: "awards",
+      image: "/images/gallery19.jpg",
+      title: "Excellence in Member Service",
+      description: "Awarded for exceptional customer care and satisfaction."
+    },
+    {
+      id: 20,
+      category: "events",
+      image: "/images/gallery20.jpg",
+      title: "Member Appreciation Day",
+      description: "Celebrating members with awards and networking."
+    },
+    {
+      id: 21,
+      category: "awards",
+      image: "/images/gallery21.jpg",
+      title: "Community Impact Award",
+      description: "Acknowledging significant contributions to local development."
     }
   ];
 

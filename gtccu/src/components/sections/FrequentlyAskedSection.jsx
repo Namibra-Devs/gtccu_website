@@ -130,7 +130,7 @@ export default function FAQStatsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+          className="bg-white rounded-2xl shadow-sm p-8 hover:shadow-lg transition-shadow duration-300"
         >
           <h2 className="text-lg md:text-4xl font-bold text-blue-900 mb-8 flex items-center">
             <span className="w-1 h-8 bg-blue-600 mr-3 rounded-full"></span>
@@ -292,7 +292,7 @@ export default function FAQStatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-shadow duration-300 flex flex-col"
             >
               {/* Quote Icon */}
               <Quote className="w-8 h-8 text-blue-100 mb-4" />
@@ -337,7 +337,7 @@ export default function FAQStatsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="max-w-7xl mx-auto mt-20 bg-white rounded-2xl shadow-xl overflow-hidden"
+        className="max-w-7xl mx-auto mt-20 bg-white rounded-2xl shadow-sm overflow-hidden"
       >
         <div className="grid md:grid-cols-2 ">
           {/* Company Details & Socials */}
