@@ -111,13 +111,13 @@ export default function ReportsPage() {
         
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 py-16 relative z-20">
         {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white rounded-2xl shadow-lg p-6 mb-8"
+          className="bg-white rounded-2xl shadow-sm p-6 mb-8"
         >
           <div className="flex items-center mb-4">
             <Filter className="w-5 h-5 text-gray-600 mr-2" />
@@ -161,7 +161,7 @@ export default function ReportsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-lg overflow-hidden"
+          className="bg-white rounded-2xl shadow-sm overflow-hidden"
         >
           <div className="border-b border-gray-200">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 bg-gray-50">
@@ -227,7 +227,7 @@ export default function ReportsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-green-50 rounded-2xl p-6 mt-8 border border-blue-200"
+          className="bg-blue-50 rounded-2xl p-6 mt-8 border border-blue-200"
         >
           <h3 className="text-lg font-semibold text-blue-800 mb-3">Need Earlier Reports?</h3>
           <p className="text-blue-700 mb-4">

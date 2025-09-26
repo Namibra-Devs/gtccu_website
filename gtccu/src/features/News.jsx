@@ -145,7 +145,7 @@ export default function NewsPage() {
        
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 py-16 relative z-20">
         {/* Search and Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -197,7 +197,7 @@ export default function NewsPage() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <div className="h-48 bg-gray-200">
                   <img 
@@ -273,7 +273,7 @@ export default function NewsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-purple-50 rounded-2xl p-8 mt-12 border border-purple-200"
+          className="bg-blue-50 rounded-2xl p-8 mt-12 border border-blue-200"
         >
           <div className="text-center">
             <h3 className="text-2xl font-bold text-blue-900 mb-2">Stay Updated</h3>

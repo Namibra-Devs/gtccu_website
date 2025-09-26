@@ -160,7 +160,7 @@ export default function PoliciesPage() {
         
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 py-16 relative z-20">
         {/* Category Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -200,7 +200,7 @@ export default function PoliciesPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-xl transition-shadow"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
@@ -256,7 +256,7 @@ export default function PoliciesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl shadow-lg p-12 text-center"
+            className="bg-white rounded-2xl shadow-sm p-12 text-center"
           >
             <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-800 mb-2">No policies found</h3>
@@ -283,7 +283,7 @@ export default function PoliciesPage() {
             </ul>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white rounded-2xl shadow-sm p-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">Need Assistance?</h3>
             <p className="text-gray-600 mb-4">
               If you have questions about any of our policies or need help understanding them, our team is here to help.

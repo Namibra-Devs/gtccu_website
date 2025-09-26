@@ -134,7 +134,7 @@ export default function JobsPage() {
         
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-16 -mt-16 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 py-16 relative z-20">
         {/* Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -180,7 +180,7 @@ export default function JobsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-xl transition-shadow"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
@@ -246,7 +246,7 @@ export default function JobsPage() {
             ))}
 
             {jobOpenings.length === 0 && (
-              <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+              <div className="bg-white rounded-2xl shadow-sm p-12 text-center">
                 <Briefcase className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">No current openings</h3>
                 <p className="text-gray-600">Check back later for new job opportunities.</p>

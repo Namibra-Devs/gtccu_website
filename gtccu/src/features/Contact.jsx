@@ -113,7 +113,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 ">
       <Toast toast={toast} onClose={closeToast} />
       
       {/* Hero Section */}
@@ -140,7 +140,7 @@ export default function ContactPage() {
       
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-16 -mt-16 relative z-20">
+      <div className="max-w-4xl mx-auto px-4 py-16  relative z-20">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Information */}
           <motion.div
